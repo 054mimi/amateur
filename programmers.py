@@ -8,32 +8,33 @@ st.title("🔢PROGRAMMER'S CALC")
 col1, col2 = st.columns([1, 1])
 
 with col1:
-    c_from = st.selectbox(
+c_from = st.selectbox(                  #left column
         "Convert From:",
-        ["Bin", "Oct", "Dec", "Hex"],
+        ["Bin", "Oct", "Dec", "Hex"],   #select the base to conver FROM
         placeholder="convert from"
     )
 
 with col2:
-    base = st.selectbox(
-        "Convert To:",
+    base = st.selectbox(                #right dropdown menu
+        "Convert To:",                   # base to convert TO       
         ["Bin", "Oct", "Dec", "Hex"],
         placeholder="convert to"
     )
 
 # Map bases to numbers
-base_map = {"Bin": 2, "Oct": 8, "Dec": 10, "Hex": 16}
+base_map = {"Bin": 2, "Oct": 8, "Dec": 10, "Hex": 16}   #assign str values integers
 
-st.markdown("---")  # separator line
+st.markdown("---")  # separator line            #a separator line...like <hr>
 
-num = st.text_input("Enter a number:")
+num = st.text_input("Enter a number:")          #streamlit requests for user input...type=number...nani hajui number😂
 
+#nested if loop to check which bases the useer chose....and to convert the value
 if num:
     try:
         # Convert input to decimal
         decimal_num = int(num, base_map[c_from])
 
-        if c_from == base:
+        if c_from == base:  #cant convert from BIN to BIN
             st.warning("⚠️ You selected the same base for conversion.")
         else:
             # Show result based on target base
